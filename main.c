@@ -56,7 +56,7 @@ int main(int argc, char *argv[])
 	}
 
 	// Check putput file
-	if (output == NULL
+	if (output == NULL)
 	{
 		strcat(output, ".out");
 	}
