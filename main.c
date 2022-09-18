@@ -28,11 +28,11 @@ int main(int argc, char *argv[])
 			break;
 		case 'i':
 			input = optarg;
-			iflag = 1;
+			//iflag = 1;
 			break;
 		case 'o':
 			output = optarg;
-			oflag = 1;
+			//oflag = 1;
 			break;
 		case '?':
 			if (optopt == 'i' || optopt == 'o')
@@ -49,14 +49,14 @@ int main(int argc, char *argv[])
 		}
 
     // Check input file
-	if (iflag == 0)
+	if (input == NULL)
 	{
 		fprintf(stderr, "Input file required\n");
 		exit(EXIT_FAILURE);		
 	}
 
 	// Check putput file
-	if (oflag == 0)
+	if (output == NULL
 	{
 		strcat(output, ".out");
 	}
