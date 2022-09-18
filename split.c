@@ -9,7 +9,7 @@ void split(int fd, int length, char *str)
 	int i = 0;
 	int arr[length];
 	char contents[256];
-	char convert[20];
+	char *convert;
 	const char s[2] = " ";
 
 	/*get the first token */
@@ -22,23 +22,24 @@ void split(int fd, int length, char *str)
 		token = strtok(NULL, s);
 	}
 
+	// Write to file
 	sprintf(contents, "%d", getpid());
-		int l = strlen(contents);
-		contents[l++] = ':';
-		contents[l++] = ' ';
-		contents[l] = '\0';
+	int l = strlen(contents);
+	contents[l++] = ':';
+	contents[l++] = ' ';
+	contents[l] = '\0';
 
-		for (int j = length - 1; j >= 0 ; j--)
-		{
-			sprintf(convert, "%d", arr[j]);
-			int k = strlen(convert);
-			if (j != 0)
-				convert[k] = ' ';
-			else
-				convert[k] = '\n';
-			strcat(contents, convert);
-
-		}
-
-		write(fd, contents, strlen(contents));
+	for (int j = length - 1; j >= 0 ; j--)
+	{
+		convert = malloc(sizeof(char *) * 20);
+		sprintf(convert, "%d", arr[j]);
+		int k = strlen(convert);
+		if (j != 0)
+			convert[k] = ' ';
+		else
+			convert[k] = '\n';
+		strcat(contents, convert);
+		free(convert);
+	}
+	write(fd, contents, strlen(contents));
 }

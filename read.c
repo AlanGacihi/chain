@@ -3,6 +3,10 @@
 #include <stdio.h>
 #include <unistd.h>
 
+/**
+ * Read a line from a file descriptor.
+ *
+ */
 void readline(int fd, char *buffer)
 {
        	char ch;

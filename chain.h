@@ -6,6 +6,7 @@
 #include <sys/stat.h>
 #include <stddef.h>
 #include <fcntl.h>
+#include <ctype.h>
 #include <unistd.h>
 
 void readline(int fd, char *buffer);
