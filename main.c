@@ -12,7 +12,7 @@ int main(int argc, char *argv[])
 	char line[256];
 	char error[128];
 	char *input = NULL;
-	char *output = NULL;
+	char *output = "";
 	int iflag = 0;
 	int oflag = 0;
 	int length;
@@ -56,8 +56,7 @@ int main(int argc, char *argv[])
 	}
 
 	// Check putput file
-	if (output == NULL)
-	{
+	if (output[0] == '')
 		strcat(output, ".out");
 	}
 	
