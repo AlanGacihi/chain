@@ -22,6 +22,13 @@ void split(int fd, int length, char *str)
 		token = strtok(NULL, s);
 	}
 
+	// Check length of integers
+	if (length != i)
+	{
+		fprintf(stderr, "Invalid number of integers\n");
+		exit(EXIT_FAILURE);
+	}
+
 	// Write to file
 	sprintf(contents, "%d", getpid());
 	int l = strlen(contents);

@@ -11,9 +11,10 @@ int main(int argc, char *argv[])
 {
 	char line[256];
 	char error[128];
-	char *input = "input.dat";
-	char *output = "output.dat";
+	char *input = NULL;
+	char *output = NULL;
 	int iflag = 0;
+	int oflag = 0;
 	int length;
 	int c;
 
@@ -31,6 +32,7 @@ int main(int argc, char *argv[])
 			break;
 		case 'o':
 			output = optarg;
+			oflag = 1;
 			break;
 		case '?':
 			if (optopt == 'i' || optopt == 'o')
@@ -46,7 +48,20 @@ int main(int argc, char *argv[])
 			break;
 		}
 
-        //Create file descriptor
+    // Check input file
+	if (iflag == 0)
+	{
+		fprintf(stderr, "Input file required\n");
+		exit(EXIT_FAILURE);		
+	}
+
+	// Check putput file
+	if (oflag == 0)
+	{
+		strcat(output, ".out");
+	}
+	
+	//Create file descriptor
 	int fd = open(input, O_RDONLY);
 	int fd2 = open(output, O_WRONLY | O_CREAT);
 
