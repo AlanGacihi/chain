@@ -25,7 +25,7 @@ int main(int argc, char *argv[])
 		{
 		case 'h':
 			fprintf(stderr, "Usage: chain [-h] [-i inputfilename] [-o outputfilename]\n");
-			break;
+			exit(EXIT_FAILURE);
 		case 'i':
 			input = optarg;
 			break;
@@ -35,14 +35,19 @@ int main(int argc, char *argv[])
 			break;
 		case '?':
 			if (optopt == 'i' || optopt == 'o')
+			{
 				fprintf (stderr, "Usage: chain [-h] [-i inputfilename] [-o outputfilename]\n");
+				exit(EXIT_FAILURE);
+			}
 			else if (isprint (optopt))
+			{
 				fprintf (stderr, "Unknown option `-%c'.\n", optopt);
-			else
-				fprintf (stderr,
-					 "Unknown option character `\\x%x'.\n",
-					 optopt);
-			return 1;
+				exit(EXIT_FAILURE);
+			}
+			else {
+				fprintf (stderr, "Unknown option character `\\x%x'.\n", optopt);
+				exit(EXIT_FAILURE);
+			}
 		default:
 			break;
 		}
