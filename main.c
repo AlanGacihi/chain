@@ -55,6 +55,7 @@ int main(int argc, char *argv[])
 
 	// Check putput file
 	if (oflag == 0)
+	{
 		strcat(output, input);
 		strcat(output, ".out");
 	}
