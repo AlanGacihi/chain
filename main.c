@@ -12,8 +12,7 @@ int main(int argc, char *argv[])
 	char line[256];
 	char error[128];
 	char *input = NULL;
-	char *output = "";
-	int iflag = 0;
+	char output[64];
 	int oflag = 0;
 	int length;
 	int c;
@@ -28,11 +27,10 @@ int main(int argc, char *argv[])
 			break;
 		case 'i':
 			input = optarg;
-			//iflag = 1;
 			break;
 		case 'o':
-			output = optarg;
-			//oflag = 1;
+			strcat(output, optarg);
+			oflag = 1;
 			break;
 		case '?':
 			if (optopt == 'i' || optopt == 'o')
@@ -56,7 +54,8 @@ int main(int argc, char *argv[])
 	}
 
 	// Check putput file
-	if (output[0] == '')
+	if (oflag == 0)
+		strcat(output, input);
 		strcat(output, ".out");
 	}
 	
