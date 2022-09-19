@@ -12,13 +12,14 @@ int main(int argc, char *argv[])
 	char line[256];
 	char error[128];
 	char *input = NULL;
-	char output[64];
+	char output;
 	int oflag = 0;
 	int length;
 	int c;
 
 	// Check options
 	opterr = 0;
+	output = malloc(sizeof(char *) * 64);
 	while ((c = getopt (argc, argv, "hi:o:")) != -1)
 		switch (c)
 		{
@@ -130,5 +131,6 @@ int main(int argc, char *argv[])
 	close(fd);
 	close(fd2);
 	free(convert);
+	free(output);
 	return 0;
 }
