@@ -54,7 +54,7 @@ int main(int argc, char *argv[])
 		exit(EXIT_FAILURE);		
 	}
 
-	// Check putput file
+	// Check output file
 	if (oflag == 0)
 	{
 		strcat(output, input);
@@ -63,7 +63,6 @@ int main(int argc, char *argv[])
 	
 	//Create file descriptor
 	int fd = open(input, O_RDONLY);
-	printf("%s\n", output);
 	int fd2 = open(output, O_WRONLY | O_CREAT);
 
 	// Chck for errors

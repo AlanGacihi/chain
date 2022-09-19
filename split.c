@@ -18,7 +18,8 @@ void split(int fd, int length, char *str)
 	/* walk through other tokens */
 	while(token != NULL)
 	{
-		arr[i++] = atoi(token);
+		if (i < length)
+			arr[i++] = atoi(token);
 		token = strtok(NULL, s);
 	}
 
