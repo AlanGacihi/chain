@@ -12,7 +12,7 @@ int main(int argc, char *argv[])
 	char line[256];
 	char error[128];
 	char *input = NULL;
-	char output;
+	char *output;
 	int oflag = 0;
 	int length;
 	int c;
